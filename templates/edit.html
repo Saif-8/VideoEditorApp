@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Video</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4 text-center">Edit Video</h1>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <video id="videoPlayer" class="w-100" controls>
+                    <source src="{{ url_for('send_file', filename=video1) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <form action="{{ url_for('process') }}" method="post" class="mt-4" id="processForm">
+            <div class="form-group">
+                <input type="hidden" name="video1" value="{{ video1 }}">
+                <input type="hidden" name="video2" value="{{ video2 }}">
+                <label for="split_point">Split Point (in Minutes:Seconds:MilliSeconds):</label>
+                <input type="text" class="form-control" id="split_point" name="split_point" readonly>
+            </div>
+            <button type="submit" class="btn btn-primary">Process</button>
+        </form>
+        <!-- Loader and Message -->
+        <div id="loader" class="text-center mt-4" style="display: none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <p class="mt-3">The video is being processed, please wait...</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional, for components like modals, tooltips, etc.) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js" integrity="sha384-b4gt/PBBxFY8p+tnJsX8SLOsa5lY6vVNJ5dKAwUz2VFWivc3hDgFC3/tia0aJMQ3N" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+COB+yYnBbhD0CKeTEv1peWj0uE2zr8vuhu" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const splitPointInput = document.getElementById('split_point');
+            const processForm = document.getElementById('processForm');
+            const loader = document.getElementById('loader');
+
+            videoPlayer.addEventListener('timeupdate', () => {
+                const currentTime = videoPlayer.currentTime;
+                const minutes = Math.floor(currentTime / 60);
+                const seconds = Math.floor(currentTime % 60);
+                const milliseconds = Math.floor((currentTime % 1) * 1000);
+                splitPointInput.value = `${minutes}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(3, '0')}`;
+            });
+
+            processForm.addEventListener('submit', (e) => {
+                loader.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

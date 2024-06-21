@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4 text-center">Video Processing Complete</h1>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <video width="100%" height="auto" controls>
+                    <source src="{{ url_for('send_file', filename=output_video) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('download_file', filename=output_video) }}" class="btn btn-primary btn-lg" download>Download Processed Video</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional, for components like modals, tooltips, etc.) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js" integrity="sha384-b4gt/PBBxFY8p+tnJsX8SLOsa5lY6vVNJ5dKAwUz2VFWivc3hDgFC3/tia0aJMQ3N" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+COB+yYnBbhD0CKeTEv1peWj0uE2zr8vuhu" crossorigin="anonymous"></script>
+
+    <script>
+        // Redirect to home page after download link is clicked
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+            window.location.href = '/';
+        });
+    </script>
+</body>
+</html>

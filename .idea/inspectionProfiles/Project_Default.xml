@@ -1,0 +1,38 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="Mdcat.models.PhysicsQuestions.*" />
+          <option value="django.db.models.fields.related.ForeignKey.*" />
+          <option value="Mdcat.models.UserResponse.*" />
+          <option value="Mdcat.models.MathQuestions1.*" />
+          <option value="Mdcat.models.MathUserResponse.*" />
+          <option value="Mdcat.models.ChemistryQuestions1.*" />
+          <option value="Mdcat.models.ChemistryUserResponse.*" />
+          <option value="Mdcat.models.BiologyQuestions1.*" />
+          <option value="Mdcat.models.BiologyUserResponse.*" />
+          <option value="Mdcat.models.FreeTest.*" />
+          <option value="Mdcat.models.FreeUserResponse.*" />
+          <option value="Mdcat.models.SpecialTest.*" />
+          <option value="Mdcat.models.SpecialUserResponse.*" />
+          <option value="Mdcat.models.ChapterScore.*" />
+          <option value="Mdcat.models.SelectedAnswers.*" />
+          <option value="Mdcat.forms.ImageForm.*" />
+          <option value="Mdcat.models.Image.*" />
+          <option value="Mdcat.models.MathChapterScore.*" />
+          <option value="Mdcat.models.ChemistryChapterScore.*" />
+          <option value="Mdcat.models.BiologyChapterScore.*" />
+          <option value="Mdcat.models.Student.*" />
+          <option value="Mdcat.models.PhysicsWrongAnswers.*" />
+          <option value="Mdcat.models.MathWrongAnswers1.*" />
+          <option value="Mdcat.models.ChemistryWrongAnswers1.*" />
+          <option value="Mdcat.models.BiologyWrongAnswers1.*" />
+          <option value="Mdcat.models.FreeWrongAnswers1.*" />
+          <option value="Mdcat.models.SpecialWrongAnswers1.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

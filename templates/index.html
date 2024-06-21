@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Videos</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4 text-center">Upload Two Videos</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <label for="video1">Select First Video To Be Edited</label>
+                <input type="file" class="form-control-file" id="video1" name="video1" accept="video/*">
+            </div>
+            <div class="form-group">
+                <label for="video2">Select Second Video To Be Inserted</label>
+                <input type="file" class="form-control-file" id="video2" name="video2" accept="video/*">
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Upload</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional, for components like modals, tooltips, etc.) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js" integrity="sha384-b4gt/PBBxFY8p+tnJsX8SLOsa5lY6vVNJ5dKAwUz2VFWivc3hDgFC3/tia0aJMQ3N" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+COB+yYnBbhD0CKeTEv1peWj0uE2zr8vuhu" crossorigin="anonymous"></script>
+</body>
+</html>

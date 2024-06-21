@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editor</title>
+</head>
+<body>
+    <h1>Video Editor</h1>
+    <form action="{{ url_for('transcribe') }}" method="post" enctype="multipart/form-data">
+        <label for="file">Upload Video File:</label>
+        <input type="file" name="file" id="file" accept="video/*" required>
+        <button type="submit">Upload and Process</button>
+    </form>
+
+    <h2>Merge Videos</h2>
+    <form id="merge-form" action="{{ url_for('merge_videos') }}" method="post" enctype="multipart/form-data">
+        <label for="video1">First Video File:</label>
+        <input type="file" name="video1" id="video1" accept="video/*" required>
+        <br><br>
+        <label for="video2">Second Video File:</label>
+        <input type="file" name="video2" id="video2" accept="video/*" required>
+        <br><br>
+        <label for="split-time">Split Time (seconds):</label>
+        <input type="number" name="split_time" id="split-time" step="0.01" required>
+        <br><br>
+        <button type="submit">Merge Videos</button>
+    </form>
+
+    <video id="video-preview" width="600" controls></video>
+    <br>
+    <button id="set-split-time">Set Split Time</button>
+    <p id="selected-time"></p>
+
+    <script>
+        const videoInput = document.getElementById('video1');
+        const videoPreview = document.getElementById('video-preview');
+        const setSplitTimeButton = document.getElementById('set-split-time');
+        const selectedTimeDisplay = document.getElementById('selected-time');
+        const splitTimeInput = document.getElementById('split-time');
+
+        videoInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const url = URL.createObjectURL(file);
+            videoPreview.src = url;
+        });
+
+        setSplitTimeButton.addEventListener('click', function() {
+            const currentTime = videoPreview.currentTime;
+            splitTimeInput.value = currentTime;
+            selectedTimeDisplay.textContent = `Selected split time: ${currentTime.toFixed(2)} seconds`;
+        });
+    </script>
+</body>
+</html>
